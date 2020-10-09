@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+      <div class="p-5 m-5 d-flex justify-content-center">
+        <div class="wrap w-50 pt-5">
+
+            <!--Used to display error messages of form inputs-->
+            {% include "messages.html" %}
+
+          <form class="form-group border border-white text-dark" action="{% url 'login' %}" method="POST">
+
+            <!--Used for Cross Site Request Forgery protection-->
+
+            <!-- csrf_token is a secret value added to a web form by the server and sent back by the user as part of a POST request, used to prevent cross-site request forgeries by making sure that the user sending the POST request has actually loaded the form -->
+            {% csrf_token %}
+
+            <div class="form-header d-flex justify-content-center">
+              <img src={% static "images/logo2.png"%} width="190" height="80" />
+            </div>
+
+            <div class="form-group pb-3 pt-3">
+              <input
+              name="username"
+                type="email"
+                placeholder="email@example.com"
+                class="form-input rounded-pill pb-2"
+              />
+            </div>
+
+            <div class="form-group pb-3 ">
+              <input
+              name="password"
+                type="password"
+                placeholder="Password"
+                class="form-input rounded-pill pb-2"
+              />
+            </div>
+
+            <!--Login Button-->
+            <div class=" pb-2 pl-3 pr-3">
+              <button class="form-button-submit rounded-pill" type="submit" value="Login">
+                Login
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+{% endblock content %}

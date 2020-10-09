@@ -1,0 +1,49 @@
+
+
+/*date time picker */
+.input-group-addon2{
+  border-color: transparent;
+  padding-left: 5%;
+  background: transparent;
+  color: #fafafa;
+
+}
+
+.input-group .form-control{
+    height: 50px;
+
+}
+.picker-input {
+  box-sizing: border-box;
+  border-color: transparent;
+  padding-left: 5%;
+  background: #fafafa;
+  width: 100%;
+  height: 50px;
+  font-size: 18px;
+}
+.picker-group {
+  width: 100%;
+  height: 50px;
+  background: #fafafa;
+  border-color: transparent;
+  left: 30%;
+}
+.picker-btn {
+  background: transparent;
+  border-color: transparent;
+  color: #122a5b;
+  font-size: 18px;
+  padding: 10px;
+  height: 50px;
+  width: 50px;
+}
+.picker-btn:hover {
+  background: #132033;
+  color: #fafafa;
+}
+
+.update-button {
+  background: #8ba2da;
+  color: #132033;
+}

@@ -1,0 +1,78 @@
+{% extends "base.html" %} 
+{% block title %}Add Elective Course{% endblock title %} 
+{% block content %}
+          <br>
+          <div class="" style="padding-left: 30px">
+
+            <a
+              class="btn btn-secondary rounded-pill"
+              href="{% url 'edit-major-sheet' %}"
+            >
+            Back to major sheet 
+            </a>
+
+
+          </div>
+<div class="p-1 d-flex justify-content-center">
+  <div class="add_div w-75">
+    <!--Used to display error messages of form inputs-->
+    {% include "messages.html" %}
+
+    <form
+      class="form-group ml-5 mr-5 pl-5 pr-5 text-dark"
+      action="{% url 'add-elective-course' %}"
+      method="POST"
+    >
+      <div class="pb-3 text-center">
+        <h3 class="title">
+          Add an Elective Course
+        </h3>
+      </div>
+
+      <!--Used for Cross Site Request Forgery protection-->
+
+      <!-- csrf_token is a secret value added to a web form by the server and sent back by the user as part of a POST request, used to prevent cross-site request forgeries by making sure that the user sending the POST request has actually loaded the form -->
+      {% csrf_token %}
+
+      <div class="form-group pb-3 pr-5 pl-5 mr-5 ml-5">
+
+        <input
+          name="name"
+          placeholder="Course Name"
+          class="form-input rounded-pill pb-2"
+        />
+      </div>
+      <div class="form-group pb-3 pr-5 pl-5 mr-5 ml-5">
+        <input
+          name="number"
+          placeholder="Course Number"
+          class="form-input rounded-pill pb-2"
+        />
+      </div>
+
+         <div class="form-group pb-3 pr-5 pl-5 mr-5 ml-5">
+        <input
+          name="credits"
+          placeholder="Course Credits"
+          class="form-input rounded-pill pb-2"
+        />
+      </div>
+
+        </div>
+        
+      </div>
+
+      <div class="pb-3  mr-5 ml-5 bd-highlight">
+        <button
+          class="form-button-submit pr-5 btn-lg rounded-pill"
+          type="submit"
+          value="Create"
+        >
+          Submit
+        </button>
+
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock content %}

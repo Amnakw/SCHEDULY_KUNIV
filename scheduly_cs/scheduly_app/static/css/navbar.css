@@ -1,0 +1,59 @@
+
+.navbar-style {
+  background-color: #fafafa;
+  color: #132033;
+  height: 80px;
+}
+.navbar-style a {
+  color: #132033;
+  font-size: 22px;
+  text-decoration: none;
+}
+.navbar-style li {
+  padding-left: 40px;
+}
+
+/* Top Navigation Menu  */
+
+/* The dropdown container */
+
+.dropdown-content {
+  display: none;
+  position: fixed;
+  margin-top: 0px;
+  background-color: #fafafa;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: #132033;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+.dropdown-content a:visited,
+.dropdown-content a:link,
+.dropdown-content a:hover,
+.dropdown-content a:active {
+  text-decoration: none;
+}
+
+/* .dropdown-content a:link {
+  text-decoration: none;
+}
+.dropdown-content a:hover {
+  text-decoration: none;
+}
+
+.dropdown-content a:active {
+  text-decoration: none;
+} */
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}

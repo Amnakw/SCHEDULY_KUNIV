@@ -1,0 +1,39 @@
+
+.delete_div {
+  background-color: #122a5b;
+  color: #f4f4f9;
+  padding-top: 15px;
+}
+
+.title{
+	color: #f4f4f9;
+}
+
+
+#searchinput {
+  background: #fafafa;
+  border-color: transparent;
+  padding-left: 12px;
+  height: 50px;
+  font-size: 18px;
+}
+#searchgroup {
+  width: 100%;
+  height: 50px;
+  background: #fafafa;
+  border-color: transparent;
+  left: 30%;
+}
+#searchbutton {
+  background: transparent;
+  border-color: transparent;
+  color: #122a5b;
+  font-size: 18px;
+  padding: 10px;
+  height: 50px;
+  width: 50px;
+}
+#searchbutton:hover {
+  background: #132033;
+  color: #fafafa;
+}

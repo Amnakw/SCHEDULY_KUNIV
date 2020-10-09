@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock title%}
+
+{% block content %}
+
+<main class="Site-content">
+      <div class="pl-5 pr-5">
+        <div class="Tablediv">
+          <div class=" mt-4 pt-4 mb-3 pb-3 pl-5 pr-5 mr-5 ml-5 text-center">
+            <h2>
+              Students Statistics
+            </h2>
+          </div>
+          <form action="{% url 'students-statistics' %}" method="GET">
+            <!-- Searchbar -->
+            <div class="row ml-5 pl-5 pr-5 mr-5">
+              <div
+                class=" d-flex justify-content-between search-group rounded-pill"
+              >
+                <input
+                  type="text"
+                  name='q'
+                  class="search-input rounded-pill"
+                  placeholder="Search..."
+                  value="{{request.GET.q}}"
+                />
+                <button class="search-btn rounded-circle" type="submit" value="Search">
+                  <i class="fa fa-search"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <!--Table -->
+
+          <div class="mb-5 pb-5 mr-5 pr-5 ml-5 pl-5 mt-4 pt-4">
+            <table class="table table-striped table-dark">
+              <thead>
+                <tr>
+                  <th class="text-center">Course#</th>
+                  <th scope="col">Course Name</th>
+                  <th class="text-center">#advise</th>
+              </tr>
+            </thead>
+            {% for course in courses %}
+             <tr>
+              <td class="text-center">{{course.number}}</td>
+              <td>{{course.name}}</td>
+              <td class="text-center">{{course.total_num_of_students}}</td>
+            </tr>
+            {% endfor %}
+
+          </table>
+
+           {% if request.user.instructor.all_statistics_allowed %}
+          {% if courses %}
+              <a
+                class="btn btn-danger rounded-pill"
+                href="{% url 'reset-students-statistics-confirmation'%}"
+              >
+                Reset all students statistics
+              </a>
+            {% else %}
+              <div class="text-center">
+                <h4>
+                  No students statistics
+                </h4>
+              </div>
+            {% endif %}
+            {% endif %}
+
+        </div>
+      </div>
+    </main>
+
+{% endblock content %}

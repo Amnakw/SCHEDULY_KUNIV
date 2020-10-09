@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block title %}Help{% endblock title %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href= {% static 'css/table.css' %} />
+<div class="p-5 m-5 d-flex justify-content-center">
+  <div class="wrap w-50 pt-5">
+<h1>Not yet registered?</h1>
+ If you are a student or an instructor in the Computer Science department in Kuwait University you must first email us at askscheduly@gmail.com or contact a staff memeber to make your account.
+<br>
+<br>
+<br>
+<h2>If you're a student</h2><br>
+<h5>
+<h4>After you login please access the <b><a href="{% url 'student-progress' %}"> progress</a> form
+</b>and then then fill it the courses you have passed.</h4>
+<i>*Please do not set courses you are <b>currently taking</b> as completed.</i>
+<br><br>
+<h4>To view the suggested plan go to <b><a href="{% url 'student-plan' %}">plan</a></b> page.</h4>
+The plan begins from the current semester onwards.<br>
+The number of credit in the rows after the semester represenet credits you need take in:
+<ul><li>Computer Science department elective courses. (<i>You can find them in the <a href="{% url 'student-wishlist' %}">wish list page</a></i>)
+<li>Collage of Scinece courses
+  <i>For more information please visit <a href="https://portal.ku.edu.kw/sisapp/faces/CourseCatalogView.jspx?_adf.ctrl-state=p6xfhh1a4_4&_afrLoop=390626239694990">the course cataloge</a></i>
+</li>
+<li>General University electives
+<i>
+For more information please visit <a href="https://portal.ku.edu.kw/sisapp/faces/CourseCatalogView.jspx?_adf.ctrl-state=p6xfhh1a4_4&_afrLoop=390626239694990">the course cataloge</a></i>
+</li>
+</h5>
+</ul>
+<h5>
+You can register a wish list of elective Computer Science courses during the time period allowed.<br>
+To know the time period for wish list period, remember to check the emails and we will let you know.<br><br>
+To change your email or password please visit <b><a href="{% url 'user-profile' %}">the profile page<a></b><br>
+<i>Remember the email must be active to recieve wish list times.</i><br>
+If you lose the password to your account please contact <a>askscheduly@gmail.com</a><br>
+</h5>
+<br>
+<br>
+<h2>If you're an instructor</h2><br>
+
+<h5>
+You can register a wish list of Computer Science courses during the time period allowed.<br>
+To visit the wish list form please visit <b><a href="{% url 'instructor-wishlist' %}">this page<a></b>
+After you choose the courses you wish to teach you will be asked to choose your time preferences.
+To  see the number of students who added the course to their wish list please visit <b><a href="{% url 'students-statistics' %}"> this page </a></b>
+<br>
+To know the time period for wish list period, remember to check the emails and we will let you know.<br><br>
+To change your email or password please visit <b><a href="{% url 'user-profile' %}">the profile page</a></b><br>
+<i>Remember the email must be active to recieve wish list times.</i><br>
+If you lose the password to your account please contact <a>askscheduly@gmail.com</a><br>
+</h5>
+<br>
+
+<br>
+<br>
+<h2>If you're a supervisor</h2><br>
+
+<h5>
+You can register a wish list of Computer Science courses during the time period allowed.<br>
+To visit the wish list form please visit <b><a href="{% url 'instructor-wishlist' %}">this page<a></b>
+After you choose the courses you wish to teach you will be asked to choose your time preferences.
+To  see the number of students who added the course to their wish list please visit <b><a href="{% url 'students-statistics' %}"> this page </a></b>
+<br>
+To  see the number of students who added the course to their wish list please visit <b><a href="{% url 'instructors-statistics' %}"> this page </a></b>
+<br>
+To know the time period for wish list period, remember to check the emails and we will let you know.<br><br>
+To change your email or password please visit <b><a href="{% url 'user-profile' %}">the profile page</a></b><br>
+<i>Remember the email must be active to recieve wish list times.</i><br>
+If you lose the password to your account please contact <a>askscheduly@gmail.com</a><br>
+</h5>
+<br>
+
+ </div>
+ </div>
+
+{% endblock content %}

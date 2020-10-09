@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Progress{% endblock title %}
+{% block content %}
+
+<main class="Site-content">
+      <div class="container1">
+      <div class="align-self-center">
+        <div class="selectcoursesdiv">
+          <div class="courses ml-5 pl-5 mt-2 pt-2">
+              <h1>Your current progress is:</h1>
+              <h5>Please check all the courses you passed and keep the courses you wish to take unchecked</h5>
+              <br><br>
+            <form method="POST">
+              {% csrf_token %}
+              {{ formset.management_form }}
+              {% for form in formset %}
+              <label class="container pl-5">
+                {{ form.name.value }}
+                <input type="hidden" name="{{ form.course_id.html_name }}" value="{{ form.course_id.value }}"/>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="{{ form.is_completed.html_name }}"
+                  {% if form.is_completed.value %}
+                  checked
+                  {% endif %}
+                />
+                <span class="checkmark"></span>
+              </label>
+              {% endfor %}
+              <button type="submit">Update progress</button>
+            </form>
+          </div>
+        </div>
+      </div>
+</main>
+
+{% endblock content %}

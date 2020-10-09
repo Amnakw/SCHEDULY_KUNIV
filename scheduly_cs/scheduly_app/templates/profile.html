@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}Profile{% endblock title %}
+
+{% block content %}
+      <div class="p-5 m-5 d-flex justify-content-center">
+        <div class="wrap w-50 pt-5">
+
+            <!--Used to display error messages of form inputs-->
+            {% include "messages.html" %}
+            <div class="text-center">
+            <h2 class="selectcoursestitle ">
+              User's Profile
+            </h2>
+          </div>
+       
+
+          <form class="form-group border border-white text-dark" action="{% url 'user-profile' %}" method="POST">
+
+            <!--Used for Cross Site Request Forgery protection-->
+
+            <!-- csrf_token is a secret value added to a web form by the server and sent back by the user as part of a POST request, used to prevent cross-site request forgeries by making sure that the user sending the POST request has actually loaded the form -->
+            {% csrf_token %}
+
+            <div class="form-group pb-3 pt-3">
+              <input
+                name="username"
+                type="email"
+                value="{{user.username}}"
+                class="form-input rounded-pill pb-2"
+              />
+            </div>
+
+            <div class="form-group pb-3 ">
+              <input
+                name="password"
+                type="password"
+                placeholder="Password"
+                class="form-input rounded-pill pb-2"
+              />
+            </div>
+
+            <div class="form-group pb-3 ">
+              <input
+                name="confirm_password"
+                type="password"
+                placeholder="confirm new password"
+                class="form-input rounded-pill pb-2"
+              />
+            </div>
+
+            <!--Update Button-->
+            <div class=" pb-2 pl-3 pr-3">
+              <button class="form-button-submit rounded-pill" type="submit" value="Update">
+                Update
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      
+{% endblock content %}

@@ -1,0 +1,175 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-style">
+
+      <a class="pl-4" href="{% url 'home' %}"
+        ><img src={% static "images/logo3.png"%} alt="logo" width="200"
+        height="60" /></a
+      >
+
+      {% if not request.user.is_anonymous %}
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+
+              <li class="nav-item pl-4">
+                <a class="nav-link" href="{% url 'home' %}">Home</a>
+              </li->
+              <li class="nav-item pl-4">
+                <a class="nav-link" href="{% url 'user-profile' %}">Profile</a>
+              </li>
+
+            {# student wishlist #}
+            {% if request.user.student %}
+              <li class="nav-item pl-4"><a class="nav-link" href="{% url 'student-progress' %}">Progress</a></li>
+              <li class="nav-item pl-4"><a class="nav-link" href="{% url 'student-plan' %}">Plan</a></li>
+              <li class="nav-item pl-4"><a class="nav-link" href="{% url 'student-wishlist' %}">Wishlist</a></li>
+            {% endif %}
+
+            {# if the user is an admin #}
+            {% if request.user.instructor.is_admin %}
+              <li class="nav-item dropdown pl-4">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdownMenuLink"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  Manage
+                </a>
+                <div class="dropdown-content">
+                  <a href="{% url 'add-instructor' %}">Add Instructor </a>
+                  <a href="{% url 'add-student' %}">Add Student </a>
+                  <a href="{% url 'edit-users' %}">Edit Users </a>
+                  <a href="{% url 'delete-users' %}">Delete User </a>
+                  <a href="{% url 'edit-major-sheet' %}">Edit Major Sheet</a>
+                  <a href="{% url 'setting-time' %}">Setting Time</a>
+                </div>
+              </li>
+            {% endif %}
+
+            {% if request.user.instructor.all_statistics_allowed %}
+            {# instructor wishlist #}
+              <li class="nav-item pl-4">
+                <a class="nav-link" href="{% url 'instructor-wishlist' %}">Wishlist</a>
+              </li>
+
+              <!--<li class="nav-item pl-4">
+                <a class="nav-link" href="{% url 'instructor-wishlist-settime' %}">Set Unpreferred Time</a>
+              </li>-->
+
+
+
+              <li class="nav-item dropdown pl-4">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdownMenuLink"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  Statistics
+                </a>
+                <div class="dropdown-content">
+                  <a href="{% url 'instructors-statistics' %}">Instructors </a>
+
+                  <a href="{% url 'students-statistics' %}">Students </a>
+                </div>
+              </li>
+            {% endif %}
+
+            {# if the user is an instructor but not an admin and not allowed to view instructors statistics #}
+            {% if request.user.instructor and not request.user.instructor.all_statistics_allowed and not request.user.instructor.is_admin  %}
+
+            {# instructor wishlist #}
+              <li class="nav-item pl-4">
+                <a class="nav-link" href="{% url 'instructor-wishlist' %}">Wishlist</a>
+              </li>
+
+              <!--<li class="nav-item pl-4">
+                <a class="nav-link" href="{% url 'instructor-wishlist-settime' %}">Set Unpreferred Time</a>
+              </li>-->
+
+
+              <li class="nav-item dropdown pl-4">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="{% url 'instructor-wishlist' %}"
+                  id="navbarDropdownMenuLink"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  Statistics
+                </a>
+                <div class="dropdown-content">
+                  <a href="{% url 'students-statistics' %}">Students </a>
+                </div>
+              </li>
+            {% endif %}
+
+              <li class="nav-item pl-4">
+                <a class="nav-link" href="{% url 'help' %}">Help</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="nav-item ">
+            <ul class="navbar-nav">
+              <li class="nav-item ml-auto  pr-4">
+                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+              </li>
+            </ul>
+          </div>
+
+      {% endif %}
+
+
+      {% if request.user.is_anonymous %}
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+
+          <li class="nav-item pl-4">
+            <a class="nav-link" href="{% url 'home' %}">Home</a>
+          </li->
+                    <li class="nav-item pl-4">
+                      <a class="nav-link" href="{% url 'help' %}">Help</a>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="nav-item ">
+                  <ul class="navbar-nav">
+                    <li class="nav-item ml-auto  pr-4">
+                      <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    </li>
+                  </ul>
+                </div>
+    {% endif %}
+
+
+    </nav>

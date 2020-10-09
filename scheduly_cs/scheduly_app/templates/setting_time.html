@@ -1,0 +1,69 @@
+{% extends "base.html" %} 
+
+{% block title %}Setting Time{% endblock title %} 
+{% block content %}
+
+<div class="p-5 d-flex justify-content-center">
+  <div class="add_div w-75">
+    <!--Used to display error messages of form inputs-->
+    {% include "messages.html" %}
+    <form
+      class="form-group ml-5 mr-5 pl-5 pr-5 text-dark"
+      action="{% url 'setting-time' %}"
+      method="POST"
+    >
+      <div class=" pb-3 text-center">
+        <h3 class="title">
+          Set Registration Time
+        </h3>
+      </div>
+
+      <!--Used for Cross Site Request Forgery protection-->
+
+      <!-- csrf_token is a secret value added to a web form by the server and sent back by the user as part of a POST request, used to prevent cross-site request forgeries by making sure that the user sending the POST request has actually loaded the form -->
+      {% csrf_token %}
+      <div class="form-group  pb-3 pr-5 pl-5 mr-5 ml-5">
+        <input
+          name="starting_date"
+          placeholder="starting date YYYY-MM-DD"
+          class="form-input rounded-pill pb-2  text-black"
+        />
+      </div>
+
+      <div class="form-group  pb-3 pr-5 pl-5 mr-5 ml-5">
+        <input
+          name="starting_time"
+          placeholder="Starting Time"
+          class="form-input rounded-pill pb-2"
+        />
+      </div>
+
+      <div class="form-group  pb-3 pr-5 pl-5 mr-5 ml-5">
+        <input
+          name="finishing_date"
+          placeholder="Finishing Date YYYY-MM-DD"
+          class="form-input rounded-pill pb-2"
+        />
+      </div>
+
+      <div class="form-group  pb-3 pr-5 pl-5 mr-5 ml-5">
+        <input
+          name="finishing_time"
+          placeholder="Finishing Time"
+          class="form-input rounded-pill pb-2"
+        />
+      </div>
+
+      <div class=" pb-5 pr-5 pl-5 mr-5 ml-5 bd-highlight">
+        <button
+          class="form-button-submit pr-5  btn-lg  rounded-pill"
+          type="submit"
+          value="Create"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock content %}

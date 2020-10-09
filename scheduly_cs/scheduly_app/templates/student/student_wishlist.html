@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block title %}Student Wishlist{% endblock title %}
+
+{% block content %}
+<main class="Site-content">
+      <!-- Select Courses -->
+      <div class="align-self-center">
+        <div class="selectcoursesdiv">
+          <form action="{% url 'student-wishlist' %}" method="GET">
+            <!--Search Input-->
+
+            <div class="row">
+              <div class="col-6">
+                <h2 class="selectcoursestitle ml-5 pl-5">
+                  Select Three Courses:
+                </h2>
+              </div>
+            </div>
+            <!-- Searchbar -->
+            <div class="row ml-5 pl-5 pr-5 mr-5">
+              <div
+                class=" d-flex justify-content-between  rounded-pill search-group"
+              >
+                <input
+                  type="text"
+                  name="q"
+                  class="rounded-pill search-input text-dark"
+                  placeholder="Search for Courses"
+                  value="{{request.GET.q}}"
+                />
+                <button class="search-btn rounded-circle" type="submit" value="Search">
+                  <i class="fa fa-search"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <!-- Courses List -->
+          <div class="courses ml-5 pl-5 mt-2 pt-2">
+            <form action="{% url 'student-wishlist' %}" method="POST">
+              {% csrf_token %}
+
+              {% for course in courses %}
+              {% if course in selected_elective_courses %}
+                <label class="container pl-5"
+                >{{course.number}} {{course.name}}
+                <input
+                  type="checkbox"
+                  name="course"
+                  value={{course.number}}
+                  checked
+                  onclick="return ValidateCourseSelection();"
+                />
+                <span class="checkmark"></span>
+              </label>
+              {% else %}
+                <label class="container pl-5"
+                >{{course.number}} {{course.name}}
+                <input
+                  type="checkbox"
+                  name="course"
+                  value={{course.number}}
+                  onclick="return ValidateCourseSelection();"
+                />
+                <span class="checkmark"></span>
+              </label>
+              {% endif %}
+
+              {% endfor %}
+
+
+
+              <!-- Next Button -->
+              <div class="pt-5 pb-5 pr-5 mr-5 bd-highlight">
+                <button
+                  id="nextButton"
+                  class="form-button-next pr-5 btn-lg rounded-pill"
+                  type="submit"
+                  onclick=" ValidateNextButton();"
+                >
+                  Next
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+
+    <script type="text/javascript">
+      function ValidateCourseSelection() {
+        var checkboxes = document.getElementsByName("course");
+        var numberOfCheckedItems = 0;
+        for (var i = 0; i < checkboxes.length; i++) {
+          if (checkboxes[i].checked) {
+            numberOfCheckedItems++
+          };
+
+        }
+        if (numberOfCheckedItems > 3) {
+          alert("You can't select more than three courses!");
+          returnToPreviousPage();
+          return false;
+        }
+        else{
+          return true
+        }
+      }
+    </script>
+
+    <script type="text/javascript">
+      function ValidateNextButton() {
+        var checkboxes = document.getElementsByName("course");
+        var numberOfCheckedItems = 0;
+
+        for (var i = 0; i < checkboxes.length; i++) {
+          if (checkboxes[i].checked) {
+            numberOfCheckedItems++;
+          }
+        }
+
+        if (numberOfCheckedItems == 0) {
+          alert("You have to choose at least a course to proceed!");
+          returnToPreviousPage();
+          return false;
+        }
+        else if (numberOfCheckedItems > 3) {
+          alert("You have maximum three courses to choose");
+          returnToPreviousPage();
+          return false;
+        }
+        else {
+          return true;
+        }
+
+      }
+    </script>
+
+
+{% endblock content %}

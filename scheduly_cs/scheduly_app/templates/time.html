@@ -1,0 +1,60 @@
+{% extends "base.html" %} 
+
+{% block title %}View Time{% endblock title %} 
+
+{%block content %}
+
+<div class="p-5 m-5 d-flex justify-content-center">
+  <div class="time_div w-75">
+    {# Display registration time #}
+    <div class="mr-5 ml-5">
+
+      {% for registration_time in registration_times %}
+
+      <div class=" pb-3 text-center">
+        <h3 class="title ">
+            Registration Period {{registration_time.id}}
+        </h3>
+      </div>
+
+
+        <div class="jumbotron p-5 m-5">
+            <div class="ml-5 pl-5 timecolor">
+
+                <h3 class="timecolor">Starts From:</h3>
+                <h4 class="timecolor">
+                  {{registration_time.starting_time}}
+                  {{registration_time.starting_date}}
+                </h4>
+                <br />
+                <h3>Until:</h3>
+                <h4>
+                  {{registration_time.finishing_time}}
+                  {{registration_time.finishing_date}}
+                </h4>
+            </div>
+
+                <div class="mt-5 pt-5">
+                  <a
+                    href="{% url 'edit-time' registration_time.id %}"
+                    class="btn btn-primary rounded-pill mt-3 btn-block"
+                    >Update
+                  </a>
+                </div>
+
+                <div>
+                  <a
+                    href="{% url 'delete-time-confirmation' registration_time.id %}"
+                    class="btn btn-danger rounded-pill mt-3 btn-block"
+                    >Delete
+                  </a>
+                </div>
+
+          </div>
+
+
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,64 @@
+.Site {
+  display: flex;
+  min-height: 100;
+  flex-direction: column;
+}
+
+.Site-content {
+  flex: 1;
+  padding-bottom: 2.5rem;
+}
+
+.footer {
+  height: 340px;
+  margin-top: -50px;
+  background-color: #132033;
+}
+.copyrights {
+  color: #f4f4f9;
+}
+
+.LinksTitle {
+  color: #cdd1d6;
+  font-weight: bold;
+  font-size: 20px;
+}
+.link {
+  height: 100px;
+}
+
+.list {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+.Links {
+  color: #e0e1dd;
+  font-weight: 200;
+  font-size: 20px;
+}
+
+.link {
+  color: #e0e1dd;
+}
+
+.link a {
+  text-decoration: none;
+  font-size: 18px;
+  color: #e0e1dd;
+  display: block;
+}
+
+.list a:hover {
+  color: #54b7e5;
+}
+
+.list {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+.line {
+  color: #cdd1d6;
+}

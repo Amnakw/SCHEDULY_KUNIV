@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Reset Instructors Statistics{% endblock title %}
+
+{% block content %}
+      <div class="p-5">
+        <div class="delete_div text-white">
+          <div class=" mt-4 pt-4 mb-3 pb-3 pl-5 pr-5 mr-5 ml-5 text-center">
+            <h2 class="title text-light text-white">
+              Are you sure you want to reset all instructors statistics?
+            </h2>
+          </div>
+          <!--Used to display messages related to updating status -->
+          {% include "messages.html" %}
+
+
+
+          <div class="text-center pt-4 row pl-5 pr-5">
+            <div class="col-6">
+
+            <h4 class="title pt-4">
+              <a
+                class="btn btn-primary rounded-pill btn-block"
+                href="{% url 'instructors-statistics'%}"
+              >
+                Cancel 
+              </a>
+               </h4>
+             </div>
+             <div class="col-6">
+
+            <h4 class="title pt-4">
+              <a
+                class="btn btn-danger rounded-pill btn-block"
+                href="{% url 'reset-instructors-statistics'%}"
+              >
+                Yes, Reset all instructors statistics
+              </a>
+
+            </h4>
+          </div>
+        </div>
+      </div>   
+{% endblock content %}
+
